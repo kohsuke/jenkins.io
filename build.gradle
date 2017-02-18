@@ -1,6 +1,21 @@
 /*
  * This build.gradle file is to be used for generating the jenkins.io site
  */
+
+
+// noop for build-shokunin
+task fetchReleaseHistory {
+}
+task fetchExamples {
+}
+task fetchExternalResources {
+}
+task printBooks {
+}
+// noop for build-shokunin until here
+
+
+
 buildscript {
     repositories {
         jcenter()
@@ -126,6 +141,7 @@ bower {
     }
 }
 
+/*
 task fetchExamples(type: Exec) {
     group 'Site'
     description 'Fetch pipeline-examples for inclusion in the site'
@@ -153,6 +169,7 @@ task fetchExternalResources(type: JRubyExec) {
     configuration 'externalFetcher'
     inputs.source file("${projectDir}/scripts/fetch-external-resources")
 }
+*/
 
 task compileContent(type: JRubyExec) {
     group 'Site'
@@ -222,11 +239,13 @@ task printHandbook(type: JRubyExec) {
 
 }
 
+/*
 task printBooks {
     group 'Handbook'
     description 'Generate all non-HTML-based handbook files'
     dependsOn printHandbook
 }
+*/
 
 task assemble {
     group 'Site'

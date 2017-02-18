@@ -36,17 +36,6 @@
 
               %li.area.multi.col-md-3.col-sm-6.col-xs-6
                 .div-mar
-                  %h5 Solutions
-
-                  %ul
-                    - site.solutions.keys.sort.each do |key|
-                      - link = "/solutions/#{key}"
-                      %li
-                        %a{:href => link}
-                          = site.solutions[key].usecase
-
-              %li.area.multi.col-md-3.col-sm-6.col-xs-6
-                .div-mar
                   %h5 Project
 
                   %ul.project

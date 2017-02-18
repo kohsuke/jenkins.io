@@ -57,9 +57,8 @@
     %ul.nav.navbar-nav
       %li.nav-item.fixed
         #download-menu.btn-group
-          %a.btn.btn-primary.dropdown-toggle{'data-toggle'=>"popover", 'data-offset' => '10 -240px', 'data-placement'=>'bottom', 'aria-haspopup'=>"true", 'aria-expanded'=>"false"}
+          %a.btn.btn-primary.dropdown-toggle{:href => 'https://jenkins.io/', 'data-toggle'=>"popover", 'data-offset' => '10 -240px', 'data-placement'=>'bottom', 'aria-haspopup'=>"true", 'aria-expanded'=>"false"}
             Downloads
-          = partial('downloadlist.html.haml')
       %li.nav-item{:class => active_link?('blog')}
         %a.nav-link{:href => expand_link('node')}
           Blog
@@ -69,31 +68,10 @@
       %li.nav-item{:class => active_link?('plugins')}
         %a.nav-link{:href => 'https://plugins.jenkins.io/'}
           Plugins
-      - # Can't use active_link? here because our section is going to be the actual solution page itself
-      - # but we still want to highlight the active link on the Use-cases dropdown
-      %li.nav-item.dropdown{:class => ('active' if (page.section && site.solutions.keys.include?(page.section.to_sym)))}
-        %a.nav-link.dropdown-toggle{'data-toggle' => 'dropdown',
-            :href=> "#", :role=>"button", 'aria-haspopup'=>"true", 'aria-expanded'=>"false"}
-          Use-cases
-        %div.dropdown-menu
-          - site.solutions.keys.sort.each do |key|
-            - link = expand_link("solutions/#{key}")
-            %a.dropdown-item.feature{:href => link, :class => active_link?(key.to_s)}
-              = site.solutions[key].usecase
       %li.nav-item{:class => active_link?('participate')}
         %a.nav-link{:href => expand_link("participate")}
           Participate
-      %li.nav-item.dropdown{:class => ('active' if (page.section == 'projects'))}
-        %a.nav-link.dropdown-toggle{'data-toggle' => 'dropdown',
-            :href=> "/projects", :role=>"button", 'aria-haspopup'=>"true", 'aria-expanded'=>"false"}
-          Sub-projects
-        %div.dropdown-menu
-          %a.dropdown-item.feature{:href => expand_link('projects/')}
-            Overview
-          - site.pages.map do |page|
-            - next unless page.url.match(/\/projects\/(\w+)\/$/)
-            %a.dropdown-item.feature{:href => page.url}
-              = page.title
+
       %li.nav-item.dropdown
         %a.nav-link.dropdown-toggle{'data-toggle' => 'dropdown',
             :href=> '#', :role=>"button", 'aria-haspopup'=>"true", 'aria-expanded'=>"false"}
@@ -109,15 +87,6 @@
             Mailing Lists
           %a.dropdown-item.feature{:href => 'https://wiki.jenkins-ci.org/'}
             Wiki
-      %li.nav-item{:class => active_link?('security')}
-        %a.nav-link{:href => expand_link('security')}
-          Security
-      %li.nav-item{:class => active_link?('press')}
-        %a.nav-link{:href => expand_link('press')}
-          Press
-      %li.nav-item{:class => active_link?('conduct')}
-        %a.nav-link{:href => expand_link('project/conduct')}
-          Conduct
 
 #ji-top-peg
   %a#ji-fork-tag{:href => 'https://github.com/jenkinsci'}
