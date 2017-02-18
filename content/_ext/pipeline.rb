@@ -18,10 +18,19 @@ Awestruct::Extensions::Pipeline.new do
   extension Awestruct::Extensions::Indexifier.new
   extension Awestruct::Extensions::Sitemap.new
 
+  extension Awestruct::Extensions::Paginator.new(:posts,
+                                                  '/node/index',
+                                                  :per_page=> 8)
+
   extension Awestruct::Extensions::Atomizer.new(:posts,
                                                 '/rss.xml',
                                                 :feed_title => 'Jenkins Blog',
                                                 :template => '_ext/atom.xml.haml')
+
+  extension Awestruct::Extensions::Tagger.new(:posts,
+                                              '/node/index',
+                                              '/node/tags',
+                                              :per_page => 10)
 
   extension Awestruct::Extensions::Sitemap.new
 
